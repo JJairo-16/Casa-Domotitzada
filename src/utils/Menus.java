@@ -51,6 +51,12 @@ public class Menus {
         scanner.nextLine();
     }
 
+    /**
+     * Mostra el menú proporcionat.
+     * 
+     * @param menu String[] amb el menú.
+     * @param field String amb un subtítol.
+     */
     private static void showMenu(String[] menu, String field) {
         System.out.println("== MENÚ ==");
 
@@ -65,6 +71,12 @@ public class Menus {
         System.out.println();
     }
 
+    /**
+     * Mostra el menú proporcionat i obte l'opció de l'usuari.
+     * 
+     * @param menu String[] amb el menú.
+     * @param field String amb un subtítol.
+     */
     public static int getOption(String[] menu, String field) {
         // * Declaració de variables
         // Input
@@ -96,7 +108,7 @@ public class Menus {
             try {
                 option = Integer.parseInt(input);
 
-                if (option >= MIN_OPTION && option <= MAX_OPTION) {
+                if (option >= MIN_OPTION && option <= MAX_OPTION) { // ? Validació de rang
                     running = false;
                 } else {
                     System.out.printf("L'opció ha d'estar entre %d i %d.%n%n", MIN_OPTION, MAX_OPTION);
@@ -113,6 +125,15 @@ public class Menus {
         return option;
     }
 
+    /**
+     * Obté del usuari la decisió de dos opcions.
+     * 
+     * @param field Prompt a preguntar.
+     * @param optionB Opció 1.
+     * @param optionA Opció 2.
+     * 
+     * @return {@code true} si la opció 1 és elegida; {@code false} del contrarri (opció 2).
+     */
     public static boolean getBool(String field, String optionA, String optionB) {
         // * Declaració de variables
         // Input
@@ -123,23 +144,27 @@ public class Menus {
         boolean running = true;
 
         // * Preparació
+        // Normlització
         optionA = optionA.trim().toLowerCase();
         optionB = optionB.trim().toLowerCase();
+
         prompt = String.format("%s (%s/%s): ", field, optionA, optionB);
 
         // * Bucle
         do {
+            // * Input
             System.out.print(prompt);
             input = scanner.nextLine();
 
+            // * Validació
             if (input.isBlank()) {
                 System.out.println("L'opció no pot estar en blanc. Si us plau, torni a intentar-ho:\n");
                 continue;
             }
 
-            input = input.trim().toLowerCase();
+            input = input.trim().toLowerCase(); // ? Normalització
 
-            if (input.equals(optionA) || input.equals(optionB)) {
+            if (input.equals(optionA) || input.equals(optionB)) { // ? Opció correcta?
                 running = false;
             }
         } while (running);

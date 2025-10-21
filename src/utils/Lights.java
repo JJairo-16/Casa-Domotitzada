@@ -19,14 +19,20 @@ public class Lights {
     // #endregion
 
     // #region Métodes
+    /**
+     * Actualitza l'estat de la llum (encesa/apagada) de l'habitació proporcionada.
+     * 
+     * @param room Ha de ser el nom exacte (Hi ha un array amb aquests a {@link Menus})
+     */
     public static void turnLight(String room, boolean newStatus) {
         // * Validacions
         if (!status.containsKey(room)) {
             return;
         }
 
+        // Nou estat equival a l'estat equivalent.
         boolean before = status.get(room);
-        String msg = (before) ? "engegada" : "apagada";
+        String msg = (before) ? "encendreda" : "apagada";
 
         if (!(before ^ newStatus)) {
             System.out.printf("La llum d'aquesta habitació ja está %s.%n", msg);
@@ -36,24 +42,33 @@ public class Lights {
         // * Actualització
         status.put(room, newStatus);
 
-        msg = (before) ? "apagat" : "engegat";
+        msg = (before) ? "enceses" : "encendret";
         System.out.printf("S'ha %s la llum d'aquesta habitació.%n", msg);
     }
 
+    /**
+     * Actualitza l'estat de les llums (enceses/apagades) de totes les habitacions.
+     */
     public static void globalTurnLigths(boolean newState) {
-        for (String key : status.keySet()) {
+        // * Actualitza tots els estats
+        for (String key : status.keySet()) { // ? Itera sobre les claus de status
             status.put(key, newState);
         }
 
-        String msg = (newState) ? "engegat" : "apagat";
+        // * Mostra missatge
+        String msg = (newState) ? "encendret" : "enceses";
         System.out.printf("S'han %s totes les llums.%n", msg);
     }
 
+    /**
+     * Obte i escriu l'estat de les llums.
+     */
     public static void getStatus() {
         System.out.println("Estat de les llums:");
-        for (String room : Menus.ROOMS) {
+
+        for (String room : Menus.ROOMS) { // ? Itera sobre l'array de llums
             boolean value = status.get(room);
-            String state = (value) ? "engegades" : "apagades";
+            String state = (value) ? "encendredes" : "apagades";
 
             System.out.printf("%s: Llums %s%n", room, state);
         }
