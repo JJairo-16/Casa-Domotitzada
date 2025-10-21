@@ -97,11 +97,11 @@ public class Menus {
         final int MIN_OPTION = 1;
         final int MAX_OPTION = menu.length;
 
+        // * Mostrar menú
+        showMenu(menu, field);
+
         // * Menú principal
         do {
-            // * Mostrar menú
-            showMenu(menu, field);
-
             // * Obtenir opció cruda
             System.out.print("Si us plau, introdueixi una opció: ");
             input = scanner.nextLine();

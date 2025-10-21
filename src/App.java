@@ -1,8 +1,10 @@
 package src;
 
-import src.utils.Blinds;
-import src.utils.Lights;
+import src.utils.Formatter;
 import src.utils.Menus;
+
+import src.utils.Lights;
+import src.utils.Blinds;
 
 public class App {
     public static void main(String[] args) {
@@ -18,8 +20,9 @@ public class App {
 
         // #region Bucle principal
         do {
+            Formatter.clear(0);
             option = Menus.getOption(Menus.MAIN_MENU_OPTIONS, "");
-            System.out.println("\n\n");
+            Formatter.clear();
 
             switch (option) {
                 case 1: // ? Llums
@@ -67,8 +70,9 @@ public class App {
         // * Menú
         do {
             // Input
+            Formatter.clear(0);
             option = Menus.getOption(Menus.LIGHT_MENU_OPTIONS, "Métode de control");
-            System.out.println("\n\n");
+            Formatter.clear();
 
             // Processament
             switch (option) {
@@ -122,8 +126,9 @@ public class App {
         // * Menú
         do {
             // Input
+            Formatter.clear(0);
             option = Menus.getOption(Menus.BLINDS_MENU_OPTIONS, "Métode de control");
-            System.out.println("\n\n");
+            Formatter.clear();
 
             // Processament
             switch (option) {

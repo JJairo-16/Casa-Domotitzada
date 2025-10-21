@@ -1,7 +1,9 @@
 package src.utils;
 
-public class Colors {
-    private Colors() {} // ? Eliminar constructor
+public class Formatter {
+    private Formatter() {} // ? Eliminar constructor
+
+    private static final boolean IS_WINDOWS = System.getProperty("os.name", "").startsWith("Windows");
 
     private static final String ESC = "\u001B";
 
@@ -29,5 +31,22 @@ public class Colors {
 
         format += RESET;
         return format;
+    }
+
+    public static void clear(int aux) {
+        try {
+            if (IS_WINDOWS) {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } else {
+                new ProcessBuilder("clear").inheritIO().start().waitFor();
+            }
+
+        } catch (Exception e) {
+            System.out.println("\n".repeat(aux - 1));
+        }
+    }
+
+    public static void clear() {
+        clear(3);
     }
 }
