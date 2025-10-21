@@ -32,7 +32,7 @@ public class Lights {
 
         // Nou estat equival a l'estat equivalent.
         boolean before = status.get(room);
-        String msg = (before) ? "enceses" : "apagades";
+        String msg = Colors.getGR(before, "enceses", "apagades");
 
         if (!(before ^ newStatus)) {
             System.out.printf("Les llums d'aquesta habitació ja estan %s.%n", msg);
@@ -42,7 +42,7 @@ public class Lights {
         // * Actualització
         status.put(room, newStatus);
 
-        msg = (before) ? "apagat" : "ences";
+        msg = Colors.getGR(!before, "ences", "apagat");
         System.out.printf("S'ha %s les llums d'aquesta habitació.%n", msg);
     }
 
@@ -56,7 +56,7 @@ public class Lights {
         }
 
         // * Mostra missatge
-        String msg = (newState) ? "ences" : "apagat";
+        String msg = Colors.getGR(newState, "ences", "apagat");
         System.out.printf("S'han %s totes les llums.%n", msg);
     }
 
@@ -64,13 +64,13 @@ public class Lights {
      * Obte i escriu l'estat de les llums.
      */
     public static void getStatus() {
-        System.out.println("Estat de les llums:");
+        System.out.printf("%sEstat de les llums:%s%n", Colors.STRONG, Colors.RESET);
 
         for (String room : Menus.ROOMS) {
             boolean value = status.get(room);
-            String state = (value) ? "encendredes" : "apagades";
+            String state = Colors.getGR(value, "enceses", "apagades");
 
-            System.out.printf("%s: Llums %s%n", room, state);
+            System.out.printf("%s%s%s: Llums %s%n", Colors.STRONG, room, Colors.RESET, state);
         }
     }
     

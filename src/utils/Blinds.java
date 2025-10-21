@@ -34,7 +34,7 @@ public class Blinds {
 
         // Nou estat equival a l'estat equivalent.
         boolean before = status.get(room);
-        String msg = (before) ? "pujades" : "baixades";
+        String msg = Colors.getGR(before, "pujades", "baixades");
 
         if (!(before ^ newStatus)) {
             System.out.printf("Les persianes d'aquesta habitació ja estan %s.%n", msg);
@@ -44,7 +44,7 @@ public class Blinds {
         // * Actualització
         status.put(room, newStatus);
 
-        msg = (before) ? "baixat" : "pujat";
+        msg = Colors.getGR(!before, "pujat", "baixat");
         System.out.printf("S'ha %s les persianes d'aquesta habitació.%n", msg);
     }
 
@@ -58,7 +58,7 @@ public class Blinds {
         }
 
         // * Mostra missatge
-        String msg = (newState) ? "pujat" : "baixat";
+        String msg = Colors.getGR(newState, "pujat", "baixat");
         System.out.printf("S'han %s totes les persianes.%n", msg);
     }
 
@@ -66,13 +66,13 @@ public class Blinds {
      * Obte i escriu l'estat de les persianes.
      */
     public static void getStatus() {
-        System.out.println("Estat de les persianes:");
+        System.out.printf("%sEstat de les persianes:%s%n", Colors.STRONG, Colors.RESET);
 
         for (String room : Menus.ROOMS) {
             boolean value = status.get(room);
-            String state = (value) ? "pujades" : "baixades";
+            String state = Colors.getGR(value, "pujades", "baixades");
 
-            System.out.printf("%s: Persianes %s%n", room, state);
+            System.out.printf("%s%s%s: Persianes %s%n", Colors.STRONG, room, Colors.RESET, state);
         }
     }
     
