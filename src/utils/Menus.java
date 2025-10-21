@@ -21,8 +21,8 @@ public class Menus {
     // #region Opcions
     public final static String[] MAIN_MENU_OPTIONS = new String[] {
         "Controlar les llums",
-        "Controlar la temperatura",
         "Controlar les persianes",
+        "Controlar la temperatura",
         "Controlar els ventiladors",
         "Sortir"
     };
@@ -40,6 +40,13 @@ public class Menus {
         "Controlar les llums de forma individual",
         "Controlar les llums de forma global",
         "Mostrar l'estat de les llums",
+        "Sortir"
+    };
+
+    public static final String[] BLINDS_MENU_OPTIONS =  new String[] {
+        "Controlar les persianes de forma individual",
+        "Controlar les persianes de forma global",
+        "Mostra l'estat de les persianes",
         "Sortir"
     };
 

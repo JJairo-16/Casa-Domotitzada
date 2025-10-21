@@ -1,5 +1,6 @@
 package src;
 
+import src.utils.Blinds;
 import src.utils.Lights;
 import src.utils.Menus;
 
@@ -24,6 +25,10 @@ public class App {
                 case 1: // ? Llums
                     lightProcess();
                     break;
+                
+                case 2: // ? Persianes
+                    blindProcess();
+                    break;
 
                 case 5: // ? Sortir
                     running = false;
@@ -37,6 +42,18 @@ public class App {
         Menus.closeScanner();
     }
 
+    public static String getRoomString() {
+        // * Declaració de variables
+        int room;
+        String roomString;
+
+        // * Menú
+        room = Menus.getOption(Menus.ROOMS, "Habitació a controlar");
+        roomString = Menus.ROOMS[room-1];
+
+        return roomString;
+    }
+
     public static void lightProcess() {
         // * Declaració de varriables
         // Menú
@@ -44,24 +61,25 @@ public class App {
         int option;
 
         // Input
-        int room;
-        String roomString;
+        String room;
         boolean newState;
-
+        
+        // * Menú
         do {
+            // Input
             option = Menus.getOption(Menus.LIGHT_MENU_OPTIONS, "Métode de control");
             System.out.println("\n\n");
 
+            // Processament
             switch (option) {
                 case 1: // ? Individual
-                    room = Menus.getOption(Menus.ROOMS, "Habitació a controlar");
-                    roomString = Menus.ROOMS[room-1];
+                    room = getRoomString();
                     System.out.println();
 
                     newState = Menus.getBool("Nou estat de la llum", "On", "Off");
                     System.out.println();
 
-                    Lights.turnLight(roomString, newState);
+                    Lights.turnLight(room, newState);
                     Menus.pause();
                     
                     System.out.println("\n\n");
@@ -79,6 +97,61 @@ public class App {
                 
                 case 3: // ? Veure estat
                     Lights.getStatus();
+                    System.out.println();
+
+                    Menus.pause();
+                    break;
+
+                case 4: // ? Sortir
+                    running = false;
+                    break;
+            }
+        } while (running);
+    }
+
+    public static void blindProcess() {
+        // * Declaració de varriables
+        // Menú
+        boolean running = true;
+        int option;
+
+        // Input
+        String room;
+        boolean newState;
+
+        // * Menú
+        do {
+            // Input
+            option = Menus.getOption(Menus.BLINDS_MENU_OPTIONS, "Métode de control");
+            System.out.println("\n\n");
+
+            // Processament
+            switch (option) {
+                case 1: // ? Individual
+                    room = getRoomString();
+                    System.out.println();
+                    
+                    newState = Menus.getBool("Pujar o baixar les persianes", "P", "B");
+                    System.out.println();
+
+                    Blinds.turnBlinds(room, newState);
+                    Menus.pause();
+
+                    System.out.println("\n\n");
+                    break;
+                
+                case 2: // ? Global
+                    newState = Menus.getBool("Pujar o baixar les persianes", "P", "B");
+                    System.out.println();
+
+                    Blinds.globalTurnBlinds(newState);
+                    Menus.pause();
+
+                    System.out.println("\n\n");
+                    break;
+            
+                case 3: // ? Veure estat
+                    Blinds.getStatus();
                     System.out.println();
 
                     Menus.pause();
