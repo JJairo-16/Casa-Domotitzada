@@ -47,7 +47,7 @@ public class Menus {
 
     // #region Métodes
     public static void pause() {
-        System.out.print("\nPrem enter per continuar.");
+        System.out.print("\nPrem enter per continuar. ");
         scanner.nextLine();
     }
 

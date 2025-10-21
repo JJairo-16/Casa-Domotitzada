@@ -33,10 +33,30 @@ public class Lights {
             return;
         }
 
+        // * Actualització
         status.put(room, newStatus);
 
         msg = (before) ? "apagat" : "engegat";
         System.out.printf("S'ha %s la llum d'aquesta habitació.%n", msg);
+    }
+
+    public static void globalTurnLigths(boolean newState) {
+        for (String key : status.keySet()) {
+            status.put(key, newState);
+        }
+
+        String msg = (newState) ? "engegat" : "apagat";
+        System.out.printf("S'han %s totes les llums.%n", msg);
+    }
+
+    public static void getStatus() {
+        System.out.println("Estat de les llums:");
+        for (String room : Menus.ROOMS) {
+            boolean value = status.get(room);
+            String state = (value) ? "engegades" : "apagades";
+
+            System.out.printf("%s: Llums %s%n", room, state);
+        }
     }
     
     // #endregion

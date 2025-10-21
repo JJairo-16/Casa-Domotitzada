@@ -53,7 +53,7 @@ public class App {
             System.out.println("\n\n");
 
             switch (option) {
-                case 1:
+                case 1: // ? Individual
                     room = Menus.getOption(Menus.ROOMS, "Habitació a controlar");
                     roomString = Menus.ROOMS[room-1];
                     System.out.println();
@@ -67,7 +67,24 @@ public class App {
                     System.out.println("\n\n");
                     break;
             
-                case 4:
+                case 2: // ? Global
+                    newState = Menus.getBool("Nou estat de les llums", "On", "Off");
+                    System.out.println();
+
+                    Lights.globalTurnLigths(newState);
+                    Menus.pause();
+
+                    System.out.println("\n\n");
+                    break;
+                
+                case 3: // ? Veure estat
+                    Lights.getStatus();
+                    System.out.println();
+
+                    Menus.pause();
+                    break;
+
+                case 4: // ? Sortir
                     running = false;
                     break;
             }
