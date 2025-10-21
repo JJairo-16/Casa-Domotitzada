@@ -3,17 +3,23 @@ package src.utils;
 import java.util.Scanner;
 
 public class Menus {
+    private Menus(){} // ? Eliminar constructor
+
     // #region Scanner
     private static Scanner scanner;
 
-    public static void setScanner(Scanner scannerInput) {
-        scanner = scannerInput;
+    public static void startScanner() {
+        scanner = new Scanner(System.in);
+    }
+
+    public static void closeScanner() {
+        scanner.close();
     }
 
     // #endregion
 
     // #region Opcions
-    public final static String[] MAIN_MENU_OPTIONS= new String[] {
+    public final static String[] MAIN_MENU_OPTIONS = new String[] {
         "Controlar les llums",
         "Controlar la temperatura",
         "Controlar les persianes",
@@ -21,19 +27,45 @@ public class Menus {
         "Sortir"
     };
 
+    public final static String[] ROOMS = new String[] {
+        "Sala d'estar",
+        "Lavabo",
+        "Cuina",
+        "h1",
+        "h2",
+        "h3"
+    };
+
+    public final static String[] LIGHT_MENU_OPTIONS = new String[] {
+        "Controlar les llums de forma individual",
+        "Controlar les llums de forma global",
+        "Mostrar l'estat de les llums",
+        "Sortir"
+    };
+
     // #endregion
 
     // #region Métodes
-    private static void showMenu(String[] menu, final int MAX_OPTION) {
+    public static void pause() {
+        System.out.print("\nPrem enter per continuar.");
+        scanner.nextLine();
+    }
+
+    private static void showMenu(String[] menu, String field) {
         System.out.println("== MENÚ ==");
-        for (int i = 0; i < MAX_OPTION; i++) {
+
+        if (!field.isBlank()) {
+            System.out.printf("-- %s:%n", field);
+        }
+
+        for (int i = 0; i < menu.length ; i++) {
             int optionNum = i + 1;
             System.out.printf("%d. %s%n", optionNum, menu[i]);
         }
         System.out.println();
     }
 
-    public static int getOption(String[] menu) {
+    public static int getOption(String[] menu, String field) {
         // * Declaració de variables
         // Input
         String input;
@@ -47,9 +79,9 @@ public class Menus {
         final int MAX_OPTION = menu.length;
 
         // * Menú principal
-        while (running) {
+        do {
             // * Mostrar menú
-            showMenu(menu, MAX_OPTION);
+            showMenu(menu, field);
 
             // * Obtenir opció cruda
             System.out.print("Si us plau, introdueixi una opció: ");
@@ -63,9 +95,9 @@ public class Menus {
 
             try {
                 option = Integer.parseInt(input);
-                
+
                 if (option >= MIN_OPTION && option <= MAX_OPTION) {
-                    return option; // <-- salir cuando es válida
+                    running = false;
                 } else {
                     System.out.printf("L'opció ha d'estar entre %d i %d.%n%n", MIN_OPTION, MAX_OPTION);
                 }
@@ -76,9 +108,45 @@ public class Menus {
             } catch (Exception e) {
                 System.out.println("Algú ha sortit malament. Si us plau, torni a intentar-ho.\n\n");
             }
-        }
+        } while (running);
         
         return option;
     }
+
+    public static boolean getBool(String field, String optionA, String optionB) {
+        // * Declaració de variables
+        // Input
+        String input;
+        String prompt;
+
+        // Menú
+        boolean running = true;
+
+        // * Preparació
+        optionA = optionA.trim().toLowerCase();
+        optionB = optionB.trim().toLowerCase();
+        prompt = String.format("%s (%s/%s): ", field, optionA, optionB);
+
+        // * Bucle
+        do {
+            System.out.print(prompt);
+            input = scanner.nextLine();
+
+            if (input.isBlank()) {
+                System.out.println("L'opció no pot estar en blanc. Si us plau, torni a intentar-ho:\n");
+                continue;
+            }
+
+            input = input.trim().toLowerCase();
+
+            if (input.equals(optionA) || input.equals(optionB)) {
+                running = false;
+            }
+        } while (running);
+
+        return (input.equals(optionA));
+        
+    }
+
     // #endregion
 }
