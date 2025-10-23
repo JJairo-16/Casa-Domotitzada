@@ -8,17 +8,17 @@ import src.utils.Blinds;
 
 public class App {
     public static void main(String[] args) {
-        // #region Declaració de variables
-        // * Bucle principal
+        // #region Declaració de variables        
+        // * Bucle principal        
         boolean running = true;
         int option;
         
-        // #endregion
+        // #endregion        
 
-        // * Inicialitzar scanner
+        // * Inicialitzar scanner        
         Menus.startScanner();
 
-        // #region Bucle principal
+        // #region Bucle principal        
         do {
             Formatter.clear(0);
             option = Menus.getOption(Menus.MAIN_MENU_OPTIONS, "");
@@ -39,42 +39,43 @@ public class App {
             }
         } while (running);
 
-        // #endregion
+        // #endregion        
 
-        // * Tencar scanner
+        // * Tencar scanner        
         Menus.closeScanner();
     }
 
     public static String getRoomString() {
-        // * Declaració de variables
+        // * Declaració de variables        
         int room;
         String roomString;
 
-        // * Menú
+        // * Menú        
         room = Menus.getOption(Menus.ROOMS, "Habitació a controlar");
         roomString = Menus.ROOMS[room-1];
 
         return roomString;
     }
 
+    // #region Funcionament de les opcions    
     public static void lightProcess() {
-        // * Declaració de varriables
-        // Menú
+        // * Declaració de varriables        
+        // Menú        
         boolean running = true;
         int option;
 
-        // Input
+        // Input        
         String room;
         boolean newState;
         
-        // * Menú
+        // * Menú        
         do {
-            // Input
+            // Input            
             Formatter.clear(0);
             option = Menus.getOption(Menus.LIGHT_MENU_OPTIONS, "Métode de control");
             Formatter.clear();
 
-            // Processament
+            // Processament            
             switch (option) {
                 case 1: // ? Individual
                     room = getRoomString();
@@ -114,23 +115,23 @@ public class App {
     }
 
     public static void blindProcess() {
-        // * Declaració de varriables
-        // Menú
+        // * Declaració de varriables        
+        // Menú        
         boolean running = true;
         int option;
 
-        // Input
+        // Input        
         String room;
         boolean newState;
 
-        // * Menú
+        // * Menú        
         do {
-            // Input
+            // Input            
             Formatter.clear(0);
             option = Menus.getOption(Menus.BLINDS_MENU_OPTIONS, "Métode de control");
             Formatter.clear();
 
-            // Processament
+            // Processament            
             switch (option) {
                 case 1: // ? Individual
                     room = getRoomString();
@@ -168,4 +169,6 @@ public class App {
             }
         } while (running);
     }
+
+    // #endregion    
 }

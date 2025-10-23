@@ -64,13 +64,15 @@ public class Lights {
      * Obte i escriu l'estat de les llums.
      */
     public static void getStatus() {
-        System.out.printf("%sEstat de les llums:%s%n", Formatter.STRONG, Formatter.RESET);
+        System.out.println(Formatter.getStrong("Estat de les llums:"));
 
         for (String room : Menus.ROOMS) {
+            String roomFormatted = Formatter.getStrong(room);
+
             boolean value = status.get(room);
             String state = Formatter.getGR(value, "enceses", "apagades");
 
-            System.out.printf("%s%s%s: Llums %s%n", Formatter.STRONG, room, Formatter.RESET, state);
+            System.out.printf("%s: Llums %s%n", roomFormatted, state);
         }
     }
     

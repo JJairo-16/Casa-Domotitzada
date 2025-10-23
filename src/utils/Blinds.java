@@ -66,13 +66,15 @@ public class Blinds {
      * Obte i escriu l'estat de les persianes.
      */
     public static void getStatus() {
-        System.out.printf("%sEstat de les persianes:%s%n", Formatter.STRONG, Formatter.RESET);
+        System.out.println(Formatter.getStrong("Estat de les persianes:"));
 
         for (String room : Menus.ROOMS) {
+            String roomFormatted = Formatter.getStrong(room);
+
             boolean value = status.get(room);
             String state = Formatter.getGR(value, "pujades", "baixades");
 
-            System.out.printf("%s%s%s: Persianes %s%n", Formatter.STRONG, room, Formatter.RESET, state);
+            System.out.printf("%s: Persianes %s%n", roomFormatted, state);
         }
     }
     

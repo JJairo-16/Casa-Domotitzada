@@ -19,7 +19,7 @@ public class Menus {
     // #endregion
 
     // #region Opcions
-    public final static String[] MAIN_MENU_OPTIONS = new String[] {
+    public static final String[] MAIN_MENU_OPTIONS = new String[] {
         "Controlar les llums",
         "Controlar les persianes",
         "Controlar la temperatura",
@@ -27,7 +27,7 @@ public class Menus {
         "Sortir"
     };
 
-    public final static String[] ROOMS = new String[] {
+    public static final String[] ROOMS = new String[] {
         "Sala d'estar",
         "Lavabo",
         "Cuina",
@@ -36,7 +36,7 @@ public class Menus {
         "h3"
     };
 
-    public final static String[] LIGHT_MENU_OPTIONS = new String[] {
+    public static final String[] LIGHT_MENU_OPTIONS = new String[] {
         "Controlar les llums de forma individual",
         "Controlar les llums de forma global",
         "Mostrar l'estat de les llums",

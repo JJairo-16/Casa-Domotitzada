@@ -10,7 +10,9 @@ public class Formatter {
     // #region Format i colors
     // * Format
     public static final String RESET = String.format("%s[0m", ESC);
+
     public static final String STRONG = String.format("%s[1m", ESC);
+    public static final String UNSTRONG = String.format("%s[22m", ESC);
 
     // * Colors
     public static final String RED = String.format("%s[31m", ESC);
@@ -18,21 +20,27 @@ public class Formatter {
 
     // #endregion
 
+    // * Colors i format
     public static String getGR(boolean condition, String value1, String value2) {
         // * Declaració de variables
-        String format = STRONG;
+        String format;
 
         // * Format
         if (condition) {
-            format += GREEN + value1;
+            format = GREEN + value1;
         } else {
-            format += RED + value2;
+            format = RED + value2;
         }
 
-        format += RESET;
+        format = STRONG + format + RESET;
         return format;
     }
 
+    public static String getStrong(String text) {
+        return STRONG + text + UNSTRONG;
+    }
+
+    // * Consola
     public static void clear(int aux) {
         try {
             if (IS_WINDOWS) {
