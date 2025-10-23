@@ -63,7 +63,7 @@ public class Lights {
     /**
      * Obte i escriu l'estat de les llums.
      */
-    public static void getStatus() {
+    public static void showStatus() {
         System.out.println(Formatter.getStrong("Estat de les llums:"));
 
         for (String room : Menus.ROOMS) {

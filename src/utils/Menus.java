@@ -69,6 +69,13 @@ public class Menus {
         "Tornar enrere"
     };
 
+    public static final String[] FANS_MENU_OPTIONS = new String[] {
+        "Establir velocitat dels ventiladors de forma individual",
+        "Establir velocitat dels ventiladors de forma global",
+        "Veure estat",
+        "Sortir"
+    };
+
     // #endregion
 
     // #region Métodes
@@ -98,26 +105,14 @@ public class Menus {
     }
 
     /**
-     * Mostra el menú proporcionat i obte l'opció de l'usuari.
-     * 
-     * @param menu String[] amb el menú.
-     * @param field String amb un subtítol.
+     * Obte l'opció de l'usuari de forma cruda.
      */
-    public static int getOption(String[] menu, String field) {
+    public static int getUserOption(int min_option, int max_option) {
         // * Declaració de variables
-        // Input
+        boolean running = true;
+
         String input;
         int option = 0;
-
-        // Menu
-        boolean running = true;
-        
-        // * Regles
-        final int MIN_OPTION = 1;
-        final int MAX_OPTION = menu.length;
-
-        // * Mostrar menú
-        showMenu(menu, field);
 
         // * Menú principal
         do {
@@ -134,10 +129,10 @@ public class Menus {
             try {
                 option = Integer.parseInt(input);
 
-                if (option >= MIN_OPTION && option <= MAX_OPTION) { // ? Validació de rang
+                if (option >= min_option && option <= max_option) { // ? Validació de rang
                     running = false;
                 } else {
-                    System.out.printf("L'opció ha d'estar entre %d i %d.%n%n", MIN_OPTION, MAX_OPTION);
+                    System.out.printf("L'opció ha d'estar entre %d i %d.%n%n", min_option, max_option);
                 }
 
             } catch (java.lang.NumberFormatException e) {
@@ -149,6 +144,27 @@ public class Menus {
         } while (running);
         
         return option;
+    }
+
+    /**
+     * Mostra el menú proporcionat i obte l'opció de l'usuari.
+     * 
+     * @param menu String[] amb el menú.
+     * @param field String amb un subtítol.
+     */
+    public static int getOption(String[] menu, String field) {
+        // * Regles
+        final int MIN_OPTION = 1;
+        final int MAX_OPTION = menu.length;
+
+        // * Mostrar menú
+        showMenu(menu, field);
+
+        return getUserOption(MIN_OPTION, MAX_OPTION);
+    }
+
+    public static int getOption(String[] menu) {
+        return getOption(menu, "");
     }
 
     /**

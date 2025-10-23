@@ -20,7 +20,7 @@ public class Blinds {
 
     // #endregion
 
-    // #region Métodes
+    // #region Mètodes
     /**
      * Actualitza l'estat de les persianes (pujades/baixades) de l'habitació proporcionada.
      * 
@@ -65,7 +65,7 @@ public class Blinds {
     /**
      * Obte i escriu l'estat de les persianes.
      */
-    public static void getStatus() {
+    public static void showStatus() {
         System.out.println(Formatter.getStrong("Estat de les persianes:"));
 
         for (String room : Menus.ROOMS) {

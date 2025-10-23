@@ -6,36 +6,41 @@ import src.utils.Menus;
 import src.utils.Lights;
 import src.utils.Blinds;
 import src.utils.Thermostat;
+import src.utils.Fans;
 
 public class App {
     public static void main(String[] args) {
-        // #region Declaració de variables        
-        // * Bucle principal        
+        // #region Declaració de variables
+        // * Bucle principal
         boolean running = true;
         int option;
-        
-        // #endregion        
 
-        // * Inicialitzar scanner        
+        // #endregion
+
+        // * Inicialitzar scanner
         Menus.startScanner();
 
-        // #region Bucle principal        
+        // #region Bucle principal
         do {
             Formatter.clear(0);
-            option = Menus.getOption(Menus.MAIN_MENU_OPTIONS, "");
+            option = Menus.getOption(Menus.MAIN_MENU_OPTIONS);
             Formatter.clear();
 
             switch (option) {
                 case 1: // ? Llums
                     lightProcess();
                     break;
-                
+
                 case 2: // ? Persianes
                     blindProcess();
                     break;
-                
+
                 case 3: // ? Termòstat
                     thermostatProcess();
+                    break;
+
+                case 4: // ? Ventiladors
+                    fanProcess();
                     break;
 
                 case 5: // ? Sortir
@@ -44,59 +49,59 @@ public class App {
             }
         } while (running);
 
-        // #endregion        
+        // #endregion
 
-        // * Tencar scanner        
+        // * Tencar scanner
         Menus.closeScanner();
     }
 
     public static String getRoomString() {
-        // * Declaració de variables        
+        // * Declaració de variables
         int room;
         String roomString;
 
-        // * Menú        
+        // * Menú
         room = Menus.getOption(Menus.ROOMS, "Habitació a controlar");
         roomString = Menus.ROOMS[room-1];
 
         return roomString;
     }
 
-    // #region Funcionament de les opcions    
+    // #region Funcionament de les opcions
     public static void lightProcess() {
-        // * Declaració de varriables        
-        // Menú        
+        // * Declaració de varriables
+        // Menú
         boolean running = true;
         int option;
 
-        // Input        
+        // Input
         String room;
         boolean newState;
-        
-        // * Menú        
+
+        // * Menú
         do {
-            // Input            
+            // Input
             Formatter.clear(0);
             option = Menus.getOption(Menus.LIGHT_MENU_OPTIONS, "Métode de control");
             Formatter.clear();
 
-            // Processament            
+            // Processament
             switch (option) {
                 case 1: // ? Individual
                     room = getRoomString();
                     System.out.println();
 
-                    newState = Menus.getBool("Nou estat de la llum", "On", "Off");
+                    newState = Menus.getBool("Encendre o apagar les llums", "On", "Off");
                     System.out.println();
 
                     Lights.turnLight(room, newState);
                     Menus.pause();
-                    
+
                     System.out.println("\n\n");
                     break;
-            
+
                 case 2: // ? Global
-                    newState = Menus.getBool("Nou estat de les llums", "On", "Off");
+                    newState = Menus.getBool("Encendre o apagar les llums", "On", "Off");
                     System.out.println();
 
                     Lights.globalTurnLigths(newState);
@@ -104,9 +109,9 @@ public class App {
 
                     System.out.println("\n\n");
                     break;
-                
+
                 case 3: // ? Veure estat
-                    Lights.getStatus();
+                    Lights.showStatus();
                     System.out.println();
 
                     Menus.pause();
@@ -120,29 +125,29 @@ public class App {
     }
 
     public static void blindProcess() {
-        // * Declaració de varriables        
-        // Menú        
+        // * Declaració de varriables
+        // Menú
         boolean running = true;
         int option;
 
-        // Input        
+        // Input
         String room;
         boolean newState;
 
-        // * Menú        
+        // * Menú
         do {
-            // Input            
+            // Input
             Formatter.clear(0);
             option = Menus.getOption(Menus.BLINDS_MENU_OPTIONS, "Métode de control");
             Formatter.clear();
 
-            // Processament            
+            // Processament
             switch (option) {
                 case 1: // ? Individual
                     room = getRoomString();
                     System.out.println();
-                    
-                    newState = Menus.getBool("Pujar o baixar les persianes", "P", "B");
+
+                    newState = Menus.getBool("Pujar o baixar les persianes", "Up", "Down");
                     System.out.println();
 
                     Blinds.turnBlinds(room, newState);
@@ -150,9 +155,9 @@ public class App {
 
                     System.out.println("\n\n");
                     break;
-                
+
                 case 2: // ? Global
-                    newState = Menus.getBool("Pujar o baixar les persianes", "P", "B");
+                    newState = Menus.getBool("Pujar o baixar les persianes", "Up", "Down");
                     System.out.println();
 
                     Blinds.globalTurnBlinds(newState);
@@ -160,9 +165,9 @@ public class App {
 
                     System.out.println("\n\n");
                     break;
-            
+
                 case 3: // ? Veure estat
-                    Blinds.getStatus();
+                    Blinds.showStatus();
                     System.out.println();
 
                     Menus.pause();
@@ -177,17 +182,17 @@ public class App {
 
     // #region Termòstats
     public static void thermostatProcess() {
-        // * Declaració de varriables        
-        // Menú        
+        // * Declaració de varriables
+        // Menú
         boolean running = true;
         int option;
 
-        // Input        
+        // Input
         String room;
 
         // * Menú
         do {
-            // Input            
+            // Input
             Formatter.clear(0);
             option = Menus.getOption(Menus.THERMOSTAT__MAIN_MENU_OPTIONS, "Métode de control");
             Formatter.clear();
@@ -198,7 +203,7 @@ public class App {
                     room = getRoomString();
                     thermostatIndividualProcess(room);
                     break;
-                
+
                 case 2: // ? Global
                     thermostatGlobalProcess();
                     break;
@@ -211,11 +216,11 @@ public class App {
     }
 
     public static void thermostatIndividualProcess(String room) {
-        // * Declaració de varriables        
-        // Menú        
+        // * Declaració de varriables
+        // Menú
         boolean running = true;
         int option;
-        
+
         String field = String.format("Métode de control individual (%s)", room);
 
         // Input
@@ -244,7 +249,7 @@ public class App {
 
                     System.out.println("\n\n");
                     break;
-                
+
                 case 2: // ? Establir temperatura
                     if (!Thermostat.getStatus(room)) {
                         Thermostat.changeTemperature(room, 0);
@@ -259,14 +264,14 @@ public class App {
                     Menus.pause();
                     System.out.println("\n\n");
                     break;
-                
+
                 case 3: // ? Veure estat
                     Thermostat.showThermStatus(room);
                     Menus.pause();
-                    
+
                     System.out.println("\n\n");
                     break;
-                
+
                 case 4: // ? Tornar enrere
                     running = false;
                     break;
@@ -275,8 +280,8 @@ public class App {
     }
 
     public static void thermostatGlobalProcess() {
-        // * Declaració de varriables        
-        // Menú        
+        // * Declaració de varriables
+        // Menú
         boolean running = true;
         int option;
 
@@ -289,7 +294,7 @@ public class App {
             Formatter.clear(0);
             option = Menus.getOption(Menus.THERMOSTAT_GLOBAL_MENU_OPTIONS, "Métode de control global");
             Formatter.clear();
-            
+
             // Processament
             switch (option) {
                 case 1: // ? Encendre o apagar
@@ -301,14 +306,14 @@ public class App {
 
                     System.out.println("\n\n");
                     break;
-                
+
                 case 2: // ? Veure estat
                     Thermostat.showAllThermsStatus();
                     Menus.pause();
 
                     System.out.println("\n\n");
                     break;
-                
+
                 case 3: // ? Tornar enrere
                     running = false;
                     break;
@@ -318,5 +323,76 @@ public class App {
 
     // #endregion
 
-    // #endregion    
+    public static void fanProcess() {
+        // * Declaració de varriables
+        // Menú
+        boolean running = true;
+        int option;
+
+        // Input
+        String room;
+        boolean newState;
+        int speed;
+
+        // * Regles
+        final int MIN_SPEED  = Fans.MIN_SPEED;
+        final int MAX_SPEED = Fans.MAX_SPEED;
+
+        // * Menú
+        do {
+            // Input
+            Formatter.clear(0);
+            option = Menus.getOption(Menus.FANS_MENU_OPTIONS, "Métode de control");
+            Formatter.clear();
+
+            // Processament
+            switch (option) {
+                case 1: // ? Individual
+                    room = getRoomString();
+                    System.out.println();
+
+                    speed = getSpeed(MIN_SPEED, MAX_SPEED);
+                    System.out.println();
+
+                    Fans.setSpeed(room, speed);
+                    Menus.pause();
+
+                    System.out.println("\n\n");
+                    break;
+
+                case 2: // ? Global
+                    speed = getSpeed(MIN_SPEED, MAX_SPEED);
+                    System.out.println();
+
+                    Fans.setGlobalSpeed(speed);
+                    Menus.pause();
+
+                    System.out.println("\n\n");
+                    break;
+
+                case 3: // ? Veure estat
+                    Fans.showStatus();
+                    Menus.pause();
+
+                    System.out.println("\n\n");
+                    break;
+
+                case 4: // ? Soortir
+                    running = false;
+                    break;
+            }
+        } while (running);
+    }
+
+    private static int getSpeed(final int MIN_SPEED, final int MAX_SPEED) {
+        int speed;
+        Formatter.clear(0);
+        Fans.showSpeeds();
+        System.out.println();
+
+        speed = Menus.getUserOption(MIN_SPEED, MAX_SPEED);
+        return speed;
+    }
+
+    // #endregion
 }
