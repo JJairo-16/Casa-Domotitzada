@@ -20,6 +20,7 @@ public class Formatter {
     public static final String RED = String.format("%s[31m", ESC);
     public static final String GREEN = String.format("%s[32m", ESC);
     public static final String BLUE = String.format("%s[34m", ESC);
+    public static final String GRAY = String.format("%s[90m", ESC);
 
     // #endregion
 

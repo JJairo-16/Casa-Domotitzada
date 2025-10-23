@@ -84,10 +84,10 @@ public class Menus {
      * @param field String amb un subtítol.
      */
     private static void showMenu(String[] menu, String field) {
-        System.out.println("== MENÚ ==");
+        System.out.println(Formatter.getStrong("== MENÚ =="));
 
         if (!field.isBlank()) {
-            System.out.printf("-- %s:%n", field);
+            System.out.printf("%s-- %s:%s%n", Formatter.GRAY, field, Formatter.RESET);
         }
 
         for (int i = 0; i < menu.length ; i++) {
@@ -171,8 +171,8 @@ public class Menus {
 
         // * Preparació
         // Normlització
-        optionA = optionA.trim().toLowerCase();
-        optionB = optionB.trim().toLowerCase();
+        optionA = optionA.trim();
+        optionB = optionB.trim();
 
         prompt = String.format("%s (%s/%s): ", field, optionA, optionB);
 
@@ -188,9 +188,9 @@ public class Menus {
                 continue;
             }
 
-            input = input.trim().toLowerCase(); // ? Normalització
+            input = input.trim(); // ? Normalització
 
-            if (input.equals(optionA) || input.equals(optionB)) { // ? Opció correcta?
+            if (input.equalsIgnoreCase(optionA) || input.equalsIgnoreCase(optionB)) { // ? Opció correcta?
                 running = false;
             }
         } while (running);
