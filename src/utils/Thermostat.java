@@ -47,7 +47,7 @@ public class Thermostat {
 
     // #region Métodes individuals
     /**
-     * Actualitza l'estat del termòstat.
+     * Actualitza l'estat (ences/apagat) del termòstat.
      * 
      * @param room Ha de ser el nom exacte (Hi ha un array amb aquests a {@link Menus}).
      */
@@ -126,7 +126,47 @@ public class Thermostat {
         temperatureString = formatTemperature(room);
         
         System.out.printf("%s - %s.%n", msg, temperatureString);
+    }
+
+    // #endregion
+
+    // #region Métodes globals
+    /**
+     * Actualitza l'estat (ences/apagat) de tots els termòstats.
+     */
+    public static void turnAllThermostats(boolean newState) {
+        for (String room : Menus.ROOMS) {
+            status.put(room, newState);
+        }
+
+        String msg = Formatter.getGR(newState, "ences", "apagat");
+        System.out.printf("S'ha %s tots els termòstats.%n", msg);
+    }
+
+    /**
+     * Mostra l'estat de tots els termòstats (ences/apagat) - (temperatura).
+     */
+    public static void showAllThermsStatus() {
+        // * Declaració de variables
+        String msg;
+        String roomFormatted;
+
+        boolean currentState;
+        String temperatureString;
         
+        // * Cap
+        System.out.println(Formatter.getStrong("Estat dels termòstats:"));
+
+        // * Cos
+        for (String room : Menus.ROOMS) {
+            currentState = status.get(room);
+
+            msg = Formatter.getGR(currentState, "Ences", "Apagat");
+            temperatureString = formatTemperature(room);
+            roomFormatted = Formatter.getStrong(room);
+            
+            System.out.printf("%s: %s - %s.%n", roomFormatted, msg, temperatureString);
+        }
     }
 
     // #endregion

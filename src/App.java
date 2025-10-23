@@ -200,6 +200,7 @@ public class App {
                     break;
                 
                 case 2: // ? Global
+                    thermostatGlobalProcess();
                     break;
 
                 case 3: // ? Sortir
@@ -229,7 +230,7 @@ public class App {
         do {
             // Input
             Formatter.clear(0);
-            option = Menus.getOption(Menus.THERMOSTAT__INDIVIDUAL_MENU_OPTIONS, field);
+            option = Menus.getOption(Menus.THERMOSTAT_INDIVIDUAL_MENU_OPTIONS, field);
             Formatter.clear();
 
             // Processament
@@ -266,7 +267,49 @@ public class App {
                     System.out.println("\n\n");
                     break;
                 
-                case 4:
+                case 4: // ? Tornar enrere
+                    running = false;
+                    break;
+            }
+        } while (running);
+    }
+
+    public static void thermostatGlobalProcess() {
+        // * Declaració de varriables        
+        // Menú        
+        boolean running = true;
+        int option;
+
+        // Input
+        boolean newState;
+
+        // * Menú
+        do {
+            // Input
+            Formatter.clear(0);
+            option = Menus.getOption(Menus.THERMOSTAT_GLOBAL_MENU_OPTIONS, "Métode de control global");
+            Formatter.clear();
+            
+            // Processament
+            switch (option) {
+                case 1: // ? Encendre o apagar
+                    newState = Menus.getBool("Nou estat dels termòstats", "on", "off");
+                    System.out.println();
+
+                    Thermostat.turnAllThermostats(newState);
+                    Menus.pause();
+
+                    System.out.println("\n\n");
+                    break;
+                
+                case 2: // ? Veure estat
+                    Thermostat.showAllThermsStatus();
+                    Menus.pause();
+
+                    System.out.println("\n\n");
+                    break;
+                
+                case 3: // ? Tornar enrere
                     running = false;
                     break;
             }

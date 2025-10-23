@@ -56,9 +56,15 @@ public class Menus {
         "Sortir"
     };
 
-    public static final String[] THERMOSTAT__INDIVIDUAL_MENU_OPTIONS = new String[] {
+    public static final String[] THERMOSTAT_INDIVIDUAL_MENU_OPTIONS = new String[] {
         "Encendre o apagar",
         "Canviar temperatura",
+        "Veure estat",
+        "Tornar enrere"
+    };
+
+    public static final String[] THERMOSTAT_GLOBAL_MENU_OPTIONS = new String[] {
+        "Encendre o apagar",
         "Veure estat",
         "Tornar enrere"
     };

@@ -31,6 +31,10 @@ Aquestes llums permeten controlar-les amb les següents opcions:
   * **Canviar temperatura:** Es por ajustar la temperatura del termòstat de cada habitació.
   * **Veure estat:** Es pot veure l'estat del termòstat.
 
+* **Control global:**
+  * **Encendre o apagar:** Es pot encendre o apagar tos els termòstats simultàniament.
+  * **Veure estat:** Es pot veure l'estat de tots els termòstats.
+
 ## Llicència
 
 Aquest projecte està sota la llicència [MIT](LICENSE).
