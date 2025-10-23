@@ -22,7 +22,7 @@ public class Lights {
     /**
      * Actualitza l'estat de les llums (encesa/apagada) de l'habitació proporcionada.
      * 
-     * @param room Ha de ser el nom exacte (Hi ha un array amb aquests a {@link Menus})
+     * @param room Ha de ser el nom exacte (Hi ha un array amb aquests a {@link Menus}).
      */
     public static void turnLight(String room, boolean newStatus) {
         // * Validacions
@@ -30,7 +30,7 @@ public class Lights {
             return;
         }
 
-        // Nou estat equival a l'estat equivalent.
+        // Nou estat equival a l'estat actual.
         boolean before = status.get(room);
         String msg = Formatter.getGR(before, "enceses", "apagades");
 

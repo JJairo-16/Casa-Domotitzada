@@ -5,6 +5,7 @@ import src.utils.Menus;
 
 import src.utils.Lights;
 import src.utils.Blinds;
+import src.utils.Thermostat;
 
 public class App {
     public static void main(String[] args) {
@@ -31,6 +32,10 @@ public class App {
                 
                 case 2: // ? Persianes
                     blindProcess();
+                    break;
+                
+                case 3: // ? Termòstat
+                    thermostatProcess();
                     break;
 
                 case 5: // ? Sortir
@@ -169,6 +174,106 @@ public class App {
             }
         } while (running);
     }
+
+    // #region Termòstats
+    public static void thermostatProcess() {
+        // * Declaració de varriables        
+        // Menú        
+        boolean running = true;
+        int option;
+
+        // Input        
+        String room;
+
+        // * Menú
+        do {
+            // Input            
+            Formatter.clear(0);
+            option = Menus.getOption(Menus.THERMOSTAT__MAIN_MENU_OPTIONS, "Métode de control");
+            Formatter.clear();
+
+            // Processament
+            switch (option) {
+                case 1: // ? Individual
+                    room = getRoomString();
+                    thermostatIndividualProcess(room);
+                    break;
+                
+                case 2: // ? Global
+                    break;
+
+                case 3: // ? Sortir
+                    running = false;
+                    break;
+            }
+        } while (running);
+    }
+
+    public static void thermostatIndividualProcess(String room) {
+        // * Declaració de varriables        
+        // Menú        
+        boolean running = true;
+        int option;
+        
+        String field = String.format("Métode de control individual (%s)", room);
+
+        // Input
+        boolean newState;
+        int newTemperature;
+
+        // * Regles
+        final int MIN_TEMPERATURE = Thermostat.MIN_TEMPERATURE;
+        final int MAX_TEMPERATURE = Thermostat.MAX_TEMPERATURE;
+
+        // * Menú
+        do {
+            // Input
+            Formatter.clear(0);
+            option = Menus.getOption(Menus.THERMOSTAT__INDIVIDUAL_MENU_OPTIONS, field);
+            Formatter.clear();
+
+            // Processament
+            switch (option) {
+                case 1: // ? Encendre o apagar
+                    newState = Menus.getBool("Nou estat del termòstat", "on", "off");
+                    System.out.println();
+
+                    Thermostat.turnThermostat(room, newState);
+                    Menus.pause();
+
+                    System.out.println("\n\n");
+                    break;
+                
+                case 2: // ? Establir temperatura
+                    if (!Thermostat.getStatus(room)) {
+                        Thermostat.changeTemperature(room, 0);
+                    } else {
+                        newTemperature = Menus.getTemperature(MIN_TEMPERATURE, MAX_TEMPERATURE);
+                        System.out.println();
+
+                        Thermostat.changeTemperature(room, newTemperature);
+                        System.out.println();
+                    }
+
+                    Menus.pause();
+                    System.out.println("\n\n");
+                    break;
+                
+                case 3: // ? Veure estat
+                    Thermostat.showThermStatus(room);
+                    Menus.pause();
+                    
+                    System.out.println("\n\n");
+                    break;
+                
+                case 4:
+                    running = false;
+                    break;
+            }
+        } while (running);
+    }
+
+    // #endregion
 
     // #endregion    
 }

@@ -8,6 +8,7 @@ Es tracta d'una simulació de la domatització d'un habitatge utilitzant l'anida
 
 * [Llums intel·ligents](#llums-intelligents) (Controlar les llums).
 * [Persianes intel·ligents](#persianes-intelligents) (Controlar les persianes).
+* [Termòstats intel·ligents](#termòstats-intelligents) (Controlar la temperatura)
 
 ### Llums intel·ligents
 
@@ -22,6 +23,13 @@ Aquestes llums permeten controlar-les amb les següents opcions:
 * **Controlar les persianes individualment:** Es pot seleccionar les persianes a pujar o baixar segons l'habitació.
 * **Controlar les persianes globalment:** Es poden pujar i baixar totes les persianes simultàniament.
 * **Veure l'estat de les persianes:** Es pot veure quines persianes estan pujades i quines estan baixades.
+
+### Termòstats intel·ligents
+
+* **Control individual:**
+  * **Encendre o apagar:** Es pot encendre o apagar el termòstat de cada habitació.
+  * **Canviar temperatura:** Es por ajustar la temperatura del termòstat de cada habitació.
+  * **Veure estat:** Es pot veure l'estat del termòstat.
 
 ## Llicència
 

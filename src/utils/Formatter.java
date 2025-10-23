@@ -4,6 +4,8 @@ public class Formatter {
     private Formatter() {} // ? Eliminar constructor
 
     private static final boolean IS_WINDOWS = System.getProperty("os.name", "").startsWith("Windows");
+    private static final ProcessBuilder WINDOWS_CLS = new ProcessBuilder("cmd", "/c", "cls").inheritIO();
+    private static final ProcessBuilder LINUX_CLS = new ProcessBuilder("clear").inheritIO();
 
     private static final String ESC = "\u001B";
 
@@ -17,6 +19,7 @@ public class Formatter {
     // * Colors
     public static final String RED = String.format("%s[31m", ESC);
     public static final String GREEN = String.format("%s[32m", ESC);
+    public static final String BLUE = String.format("%s[34m", ESC);
 
     // #endregion
 
@@ -44,9 +47,9 @@ public class Formatter {
     public static void clear(int aux) {
         try {
             if (IS_WINDOWS) {
-                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                WINDOWS_CLS.start().waitFor();
             } else {
-                new ProcessBuilder("clear").inheritIO().start().waitFor();
+                LINUX_CLS.start().waitFor();
             }
 
         } catch (Exception e) {

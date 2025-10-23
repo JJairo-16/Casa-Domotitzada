@@ -3,7 +3,7 @@ package src.utils;
 import java.util.Scanner;
 
 public class Menus {
-    private Menus(){} // ? Eliminar constructor
+    private Menus() {} // ? Eliminar constructor
 
     // #region Scanner
     private static Scanner scanner;
@@ -48,6 +48,19 @@ public class Menus {
         "Controlar les persianes de forma global",
         "Mostra l'estat de les persianes",
         "Sortir"
+    };
+
+    public static final String[] THERMOSTAT__MAIN_MENU_OPTIONS = new String[] {
+        "Controlar el termòstat de forma individual",
+        "Controlar la temperatura de forma global",
+        "Sortir"
+    };
+
+    public static final String[] THERMOSTAT__INDIVIDUAL_MENU_OPTIONS = new String[] {
+        "Encendre o apagar",
+        "Canviar temperatura",
+        "Veure estat",
+        "Tornar enrere"
     };
 
     // #endregion
@@ -178,6 +191,45 @@ public class Menus {
 
         return (input.equals(optionA));
         
+    }
+
+    public static int getTemperature(int min, int max) {
+        // * Declaració de variables
+        String input;
+        int newTemperature = 0;
+
+        boolean running = true;
+
+        // * Bucle
+        do {
+            // * Obtenir nombre (String)
+            System.out.print("Si us plau, introdueixi una temperatura (ºC): ");
+            input = scanner.nextLine();
+
+            // * Validacions
+            if (input.isBlank()) {
+                System.out.println("La temperatura no pot estar en blanc. Si us plau, torni a intentar-ho.\n\n");
+                continue;
+            }
+
+            try {
+                newTemperature = Integer.parseInt(input);
+
+                if (newTemperature >= min && newTemperature <= max) { // ? Validació de rang
+                    running = false;
+                } else {
+                    System.out.printf("La temperatura ha d'estar entre els %d i %d graus.%n%n", min, max);
+                }
+
+            } catch (java.lang.NumberFormatException e) {
+                System.out.println("La temperatura ha de ser un nombre enter. Si us plau, torni a intentar-ho.\n\n");
+            
+            } catch (Exception e) {
+                System.out.println("Algú ha sortit malament. Si us plau, torni a intentar-ho.\n\n");
+            }
+        } while (running);
+        
+        return newTemperature;
     }
 
     // #endregion

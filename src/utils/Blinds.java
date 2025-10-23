@@ -32,7 +32,7 @@ public class Blinds {
             return;
         }
 
-        // Nou estat equival a l'estat equivalent.
+        // Nou estat equival a l'estat actual.
         boolean before = status.get(room);
         String msg = Formatter.getGR(before, "pujades", "baixades");
 
