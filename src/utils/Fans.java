@@ -28,6 +28,9 @@ public class Fans {
     // #endregion
 
     // #region Mètodes de menú
+    /**
+     * Mostra les diferents velocitats en el format "<nivell>. <velocitat>"
+     */
     public static void showSpeeds() {
         System.out.println(Formatter.getStrong("== Velocitats =="));
         for (Map.Entry<Integer, String> pair : FAN_SPEEDS.entrySet()) {
@@ -52,6 +55,11 @@ public class Fans {
     // #endregion
 
     // #region Mètodes
+    /**
+     * Actualitza la velocitat del ventilador de l'habitació proporcionada.
+     * 
+     * @param room Ha de ser el nom exacte (Hi ha un array amb aquests a {@link Menus}).
+     */
     public static void setSpeed(String room, int newSpeed) {
         // * Validacions
         if (!FAN_SPEEDS.containsKey(newSpeed)) {
@@ -81,6 +89,9 @@ public class Fans {
         System.out.printf("La velocitat del ventilador d'aquesta habitació s'ha ajustat a %s.%n", formattedSpeed);
     }
     
+    /**
+     * Actualitza la velocitat dels ventiladors de totes les habitacions.
+     */
     public static void setGlobalSpeed(int newSpeed) {
         // * Validacions
         if (!FAN_SPEEDS.containsKey(newSpeed)) {
@@ -101,14 +112,23 @@ public class Fans {
         System.out.printf("La velocitat de tots els ventiladors s'ha ajustat a %s.%n", formattedSpeed);
     }
 
+    /**
+     * Obte i escriu l'estat dels ventiladors en formato "<habitació>: Ventilador".
+     */
     public static void showStatus() {
         System.out.println(Formatter.getStrong("Estat dels ventiladors:"));
 
         for (String room : Menus.ROOMS) {
             String formattedRoom = Formatter.getStrong(room);
-            String formattedSpeed = formatSpeed(speedMap.get(room));
+            int speed = speedMap.get(room);
 
-            System.out.printf("%s: Ventilador %s%n", formattedRoom, formattedSpeed);
+            String formattedSpeed = formatSpeed(speed);
+
+            if (speed == 0) {
+                System.out.printf("%s: Ventilador %s%n", formattedRoom, formattedSpeed);
+            } else {
+                System.out.printf("%s: Nivell de velocitat --> %s%n", formattedRoom, formattedSpeed);
+            }
         }
     }
 

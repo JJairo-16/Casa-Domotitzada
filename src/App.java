@@ -10,12 +10,9 @@ import src.utils.Fans;
 
 public class App {
     public static void main(String[] args) {
-        // #region Declaració de variables
-        // * Bucle principal
+        // * Declaració de variables
         boolean running = true;
         int option;
-
-        // #endregion
 
         // * Inicialitzar scanner
         Menus.startScanner();
@@ -181,6 +178,9 @@ public class App {
     }
 
     // #region Termòstats
+    /**
+     * Menú principal del termòstat.
+     */
     public static void thermostatProcess() {
         // * Declaració de varriables
         // Menú
@@ -215,6 +215,11 @@ public class App {
         } while (running);
     }
 
+    /**
+     * Submenú (individual) del termòstat.
+     * 
+     * @param room Ha de ser el nom exacte (Hi ha un array amb aquests a {@link Menus}).
+     */
     public static void thermostatIndividualProcess(String room) {
         // * Declaració de varriables
         // Menú
@@ -279,6 +284,9 @@ public class App {
         } while (running);
     }
 
+    /**
+     * Submenú (global) del termòstat.
+     */
     public static void thermostatGlobalProcess() {
         // * Declaració de varriables
         // Menú
@@ -331,7 +339,6 @@ public class App {
 
         // Input
         String room;
-        boolean newState;
         int speed;
 
         // * Regles
@@ -377,7 +384,7 @@ public class App {
                     System.out.println("\n\n");
                     break;
 
-                case 4: // ? Soortir
+                case 4: // ? Sortir
                     running = false;
                     break;
             }

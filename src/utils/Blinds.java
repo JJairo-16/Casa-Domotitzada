@@ -24,7 +24,7 @@ public class Blinds {
     /**
      * Actualitza l'estat de les persianes (pujades/baixades) de l'habitació proporcionada.
      * 
-     * @param room Ha de ser el nom exacte (Hi ha un array amb aquests a {@link Menus})
+     * @param room Ha de ser el nom exacte (Hi ha un array amb aquests a {@link Menus}).
      */
     public static void turnBlinds(String room, boolean newStatus) {
         // * Validacions
