@@ -10,6 +10,11 @@ import src.utils.Fans;
 
 public class App {
     public static void main(String[] args) {
+        App app = new App();
+        app.mainCode();
+    }
+
+    public void mainCode() {
         // * Declaració de variables
         boolean running = true;
         int option;
@@ -52,7 +57,7 @@ public class App {
         Menus.closeScanner();
     }
 
-    public static String getRoomString() {
+    public String getRoomString() {
         // * Declaració de variables
         int room;
         String roomString;
@@ -65,7 +70,7 @@ public class App {
     }
 
     // #region Funcionament de les opcions
-    public static void lightProcess() {
+    public void lightProcess() {
         // * Declaració de varriables
         // Menú
         boolean running = true;
@@ -121,7 +126,7 @@ public class App {
         } while (running);
     }
 
-    public static void blindProcess() {
+    public void blindProcess() {
         // * Declaració de varriables
         // Menú
         boolean running = true;
@@ -181,7 +186,7 @@ public class App {
     /**
      * Menú principal del termòstat.
      */
-    public static void thermostatProcess() {
+    public void thermostatProcess() {
         // * Declaració de varriables
         // Menú
         boolean running = true;
@@ -220,7 +225,7 @@ public class App {
      * 
      * @param room Ha de ser el nom exacte (Hi ha un array amb aquests a {@link Menus}).
      */
-    public static void thermostatIndividualProcess(String room) {
+    public void thermostatIndividualProcess(String room) {
         // * Declaració de varriables
         // Menú
         boolean running = true;
@@ -287,7 +292,7 @@ public class App {
     /**
      * Submenú (global) del termòstat.
      */
-    public static void thermostatGlobalProcess() {
+    public void thermostatGlobalProcess() {
         // * Declaració de varriables
         // Menú
         boolean running = true;
@@ -331,7 +336,7 @@ public class App {
 
     // #endregion
 
-    public static void fanProcess() {
+    public void fanProcess() {
         // * Declaració de varriables
         // Menú
         boolean running = true;
@@ -391,7 +396,7 @@ public class App {
         } while (running);
     }
 
-    private static int getSpeed(final int MIN_SPEED, final int MAX_SPEED) {
+    private int getSpeed(final int MIN_SPEED, final int MAX_SPEED) {
         int speed;
         Formatter.clear(0);
         Fans.showSpeeds();

@@ -107,7 +107,7 @@ public class Menus {
     /**
      * Obte l'opció de l'usuari de forma cruda.
      */
-    public static int getUserOption(int min_option, int max_option) {
+    public static int getUserOption(int minOption, int maxOption) {
         // * Declaració de variables
         boolean running = true;
 
@@ -129,10 +129,10 @@ public class Menus {
             try {
                 option = Integer.parseInt(input);
 
-                if (option >= min_option && option <= max_option) { // ? Validació de rang
+                if (option >= minOption && option <= maxOption) { // ? Validació de rang
                     running = false;
                 } else {
-                    System.out.printf("L'opció ha d'estar entre %d i %d.%n%n", min_option, max_option);
+                    System.out.printf("L'opció ha d'estar entre %d i %d.%n%n", minOption, maxOption);
                 }
 
             } catch (java.lang.NumberFormatException e) {
