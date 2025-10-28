@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class Blinds {
-    private Blinds() {} // ? Eliminar constructor
+    private Blinds() {} // ? Eliminar el constructor
 
     // #region Persianes
     // ? true → Pujades
@@ -63,7 +63,7 @@ public class Blinds {
     }
 
     /**
-     * Obte i escriu l'estat de les persianes.
+     * Obté i escriu l'estat de les persianes.
      */
     public static void showStatus() {
         System.out.println(Formatter.getStrong("Estat de les persianes:"));

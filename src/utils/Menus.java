@@ -3,7 +3,7 @@ package src.utils;
 import java.util.Scanner;
 
 public class Menus {
-    private Menus() {} // ? Eliminar constructor
+    private Menus() {} // ? Eliminar el constructor
 
     // #region Scanner
     private static Scanner scanner;
@@ -78,7 +78,7 @@ public class Menus {
 
     // #endregion
 
-    // #region Métodes
+    // #region Mètodes
     public static void pause() {
         System.out.print("\nPrem enter per continuar. ");
         scanner.nextLine();
@@ -105,7 +105,7 @@ public class Menus {
     }
 
     /**
-     * Obte l'opció de l'usuari de forma cruda.
+     * Obté l'opció de l'usuari de forma crua.
      */
     public static int getUserOption(int minOption, int maxOption) {
         // * Declaració de variables
@@ -116,7 +116,7 @@ public class Menus {
 
         // * Menú principal
         do {
-            // * Obtenir opció cruda
+            // * Obtenir opció crua
             System.out.print("Si us plau, introdueixi una opció: ");
             input = scanner.nextLine();
 
@@ -136,10 +136,10 @@ public class Menus {
                 }
 
             } catch (java.lang.NumberFormatException e) {
-                System.out.println("L'opció ha de ser un nombre enter. Si us plau, torni a intentar-ho.\n\n");
+                System.out.println("L'opció ha de ser un número enter. Si us plau, torni a intentar-ho.\n\n");
             
             } catch (Exception e) {
-                System.out.println("Algú ha sortit malament. Si us plau, torni a intentar-ho.\n\n");
+                System.out.println("Alguna cosa ha sortit malament. Si us plau, torni a intentar-ho.\n\n");
             }
         } while (running);
         
@@ -147,7 +147,7 @@ public class Menus {
     }
 
     /**
-     * Mostra el menú proporcionat i obte l'opció de l'usuari.
+     * Mostra el menú proporcionat i obté l'opció de l'usuari.
      * 
      * @param menu String[] amb el menú.
      * @param field String amb un subtítol.
@@ -168,13 +168,13 @@ public class Menus {
     }
 
     /**
-     * Obté del usuari la decisió de dos opcions.
+     * Obté de l'usuari la decisió de dos opcions.
      * 
      * @param field Prompt a preguntar.
      * @param optionB Opció 1.
      * @param optionA Opció 2.
      * 
-     * @return {@code true} si la opció 1 és elegida; {@code false} del contrarri (opció 2).
+     * @return {@code true} si la opció 1 és elegida; {@code false} del contrari (opció 2).
      */
     public static boolean getBool(String field, String optionA, String optionB) {
         // * Declaració de variables
@@ -186,7 +186,7 @@ public class Menus {
         boolean running = true;
 
         // * Preparació
-        // Normlització
+        // Normalització
         optionA = optionA.trim();
         optionB = optionB.trim();
 
@@ -200,7 +200,7 @@ public class Menus {
 
             // * Validació
             if (input.isBlank()) {
-                System.out.println("L'opció no pot estar en blanc. Si us plau, torni a intentar-ho:\n");
+                System.out.println("L'opció no pot estar buida. Si us plau, torni a intentar-ho:\n");
                 continue;
             }
 
@@ -244,10 +244,10 @@ public class Menus {
                 }
 
             } catch (java.lang.NumberFormatException e) {
-                System.out.println("La temperatura ha de ser un nombre enter. Si us plau, torni a intentar-ho.\n\n");
+                System.out.println("La temperatura ha de ser un número enter. Si us plau, torni a intentar-ho.\n\n");
             
             } catch (Exception e) {
-                System.out.println("Algú ha sortit malament. Si us plau, torni a intentar-ho.\n\n");
+                System.out.println("Alguna cosa ha sortit malament. Si us plau, torni a intentar-ho.\n\n");
             }
         } while (running);
         

@@ -53,7 +53,7 @@ public class App {
 
         // #endregion
 
-        // * Tencar scanner
+        // * Tancar scanner
         Menus.closeScanner();
     }
 
@@ -71,7 +71,7 @@ public class App {
 
     // #region Funcionament de les opcions
     public void lightProcess() {
-        // * Declaració de varriables
+        // * Declaració de variables
         // Menú
         boolean running = true;
         int option;
@@ -84,7 +84,7 @@ public class App {
         do {
             // Input
             Formatter.clear(0);
-            option = Menus.getOption(Menus.LIGHT_MENU_OPTIONS, "Métode de control");
+            option = Menus.getOption(Menus.LIGHT_MENU_OPTIONS, "Mètode de control");
             Formatter.clear();
 
             // Processament
@@ -106,7 +106,7 @@ public class App {
                     newState = Menus.getBool("Encendre o apagar les llums", "On", "Off");
                     System.out.println();
 
-                    Lights.globalTurnLigths(newState);
+                    Lights.globalTurnLights(newState);
                     Menus.pause();
 
                     System.out.println("\n\n");
@@ -127,7 +127,7 @@ public class App {
     }
 
     public void blindProcess() {
-        // * Declaració de varriables
+        // * Declaració de variables
         // Menú
         boolean running = true;
         int option;
@@ -140,7 +140,7 @@ public class App {
         do {
             // Input
             Formatter.clear(0);
-            option = Menus.getOption(Menus.BLINDS_MENU_OPTIONS, "Métode de control");
+            option = Menus.getOption(Menus.BLINDS_MENU_OPTIONS, "Mètode de control");
             Formatter.clear();
 
             // Processament
@@ -187,7 +187,7 @@ public class App {
      * Menú principal del termòstat.
      */
     public void thermostatProcess() {
-        // * Declaració de varriables
+        // * Declaració de variables
         // Menú
         boolean running = true;
         int option;
@@ -199,7 +199,7 @@ public class App {
         do {
             // Input
             Formatter.clear(0);
-            option = Menus.getOption(Menus.THERMOSTAT__MAIN_MENU_OPTIONS, "Métode de control");
+            option = Menus.getOption(Menus.THERMOSTAT__MAIN_MENU_OPTIONS, "Mètode de control");
             Formatter.clear();
 
             // Processament
@@ -226,12 +226,12 @@ public class App {
      * @param room Ha de ser el nom exacte (Hi ha un array amb aquests a {@link Menus}).
      */
     public void thermostatIndividualProcess(String room) {
-        // * Declaració de varriables
+        // * Declaració de variables
         // Menú
         boolean running = true;
         int option;
 
-        String field = String.format("Métode de control individual (%s)", room);
+        String field = String.format("Mètode de control individual (%s)", room);
 
         // Input
         boolean newState;
@@ -293,7 +293,7 @@ public class App {
      * Submenú (global) del termòstat.
      */
     public void thermostatGlobalProcess() {
-        // * Declaració de varriables
+        // * Declaració de variables
         // Menú
         boolean running = true;
         int option;
@@ -305,7 +305,7 @@ public class App {
         do {
             // Input
             Formatter.clear(0);
-            option = Menus.getOption(Menus.THERMOSTAT_GLOBAL_MENU_OPTIONS, "Métode de control global");
+            option = Menus.getOption(Menus.THERMOSTAT_GLOBAL_MENU_OPTIONS, "Mètode de control global");
             Formatter.clear();
 
             // Processament
@@ -337,7 +337,7 @@ public class App {
     // #endregion
 
     public void fanProcess() {
-        // * Declaració de varriables
+        // * Declaració de variables
         // Menú
         boolean running = true;
         int option;
@@ -354,7 +354,7 @@ public class App {
         do {
             // Input
             Formatter.clear(0);
-            option = Menus.getOption(Menus.FANS_MENU_OPTIONS, "Métode de control");
+            option = Menus.getOption(Menus.FANS_MENU_OPTIONS, "Mètode de control");
             Formatter.clear();
 
             // Processament

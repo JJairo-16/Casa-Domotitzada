@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class Fans {
-    private Fans() {} // ? Eliminar constructor
+    private Fans() {} // ? Eliminar el constructor
 
     // #region Ventiladors
     public static final int MIN_SPEED = 0;
@@ -113,7 +113,7 @@ public class Fans {
     }
 
     /**
-     * Obte i escriu l'estat dels ventiladors en formato "<habitació>: Ventilador".
+     * Obté i escriu l'estat dels ventiladors en formato "<habitació>: Ventilador".
      */
     public static void showStatus() {
         System.out.println(Formatter.getStrong("Estat dels ventiladors:"));

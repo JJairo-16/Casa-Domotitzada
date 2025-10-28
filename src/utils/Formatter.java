@@ -1,7 +1,7 @@
 package src.utils;
 
 public class Formatter {
-    private Formatter() {} // ? Eliminar constructor
+    private Formatter() {} // ? Eliminar el constructor
 
     private static final boolean IS_WINDOWS = System.getProperty("os.name", "").startsWith("Windows");
     private static final ProcessBuilder WINDOWS_CLS = new ProcessBuilder("cmd", "/c", "cls").inheritIO();
@@ -14,7 +14,7 @@ public class Formatter {
     public static final String RESET = String.format("%s[0m", ESC);
 
     public static final String STRONG = String.format("%s[1m", ESC);
-    public static final String UNSTRONG = String.format("%s[22m", ESC);
+    public static final String UN_STRONG = String.format("%s[22m", ESC);
 
     // * Colors
     public static final String RED = String.format("%s[31m", ESC);
@@ -41,7 +41,7 @@ public class Formatter {
     }
 
     public static String getStrong(String text) {
-        return STRONG + text + UNSTRONG;
+        return STRONG + text + UN_STRONG;
     }
 
     // * Consola

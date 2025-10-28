@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class Lights {
-    private Lights() {} // ? Eliminar constructor
+    private Lights() {} // ? Eliminar el constructor
 
     // #region Llums
     private static Map<String, Boolean> status = new HashMap<>(Map.of(
@@ -18,7 +18,7 @@ public class Lights {
 
     // #endregion
 
-    // #region Métodes
+    // #region Mètodes
     /**
      * Actualitza l'estat de les llums (encesa/apagada) de l'habitació proporcionada.
      * 
@@ -42,26 +42,26 @@ public class Lights {
         // * Actualització
         status.put(room, newStatus);
 
-        msg = Formatter.getGR(!before, "ences", "apagat");
+        msg = Formatter.getGR(!before, "encès", "apagat");
         System.out.printf("S'ha %s les llums d'aquesta habitació.%n", msg);
     }
 
     /**
      * Actualitza l'estat de les llums (enceses/apagades) de totes les habitacions.
      */
-    public static void globalTurnLigths(boolean newState) {
+    public static void globalTurnLights(boolean newState) {
         // * Actualitza tots els estats
         for (String key : status.keySet()) { // ? Itera sobre les claus de status
             status.put(key, newState);
         }
 
         // * Mostra missatge
-        String msg = Formatter.getGR(newState, "ences", "apagat");
+        String msg = Formatter.getGR(newState, "encès", "apagat");
         System.out.printf("S'han %s totes les llums.%n", msg);
     }
 
     /**
-     * Obte i escriu l'estat de les llums.
+     * Obté i escriu l'estat de les llums.
      */
     public static void showStatus() {
         System.out.println(Formatter.getStrong("Estat de les llums:"));

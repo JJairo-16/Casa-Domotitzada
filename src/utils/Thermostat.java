@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class Thermostat {
-    private Thermostat() {}  // ? Eliminar constructor
+    private Thermostat() {}  // ? Eliminar el constructor
 
     // * Regles
     public static final int MIN_TEMPERATURE = 10;
@@ -38,16 +38,16 @@ public class Thermostat {
     /**
      * Dona format a la temperatura amb color blau, negreta i afegint "ºC".
      * 
-     * @param Habitació de la qual utilitza la temperatura.
+     * @param room Habitació de la qual s'utilitza la temperatura.
      */
     private static String formatTemperature(String room) {
         int temperatureRoom = temperature.get(room);
         return Formatter.STRONG + Formatter.BLUE + temperatureRoom + "ºC" + Formatter.RESET;
     }
 
-    // #region Métodes individuals
+    // #region Mètodes individuals
     /**
-     * Actualitza l'estat (ences/apagat) del termòstat.
+     * Actualitza l'estat (encès/apagat) del termòstat.
      * 
      * @param room Ha de ser el nom exacte (Hi ha un array amb aquests a {@link Menus}).
      */
@@ -62,7 +62,7 @@ public class Thermostat {
 
         // Nou estat equival a l'estat actual.
         if (!(currentState ^ newState)) {
-            msg = Formatter.getGR(currentState, "ences", "apagat");
+            msg = Formatter.getGR(currentState, "encès", "apagat");
             System.out.printf("El termòstat d'aquesta habitació ja està %s.%n", msg);
             return;
         }
@@ -70,7 +70,7 @@ public class Thermostat {
         // * Actualització
         status.put(room, newState);
 
-        msg = Formatter.getGR(newState, "ences", "apagat");
+        msg = Formatter.getGR(newState, "encès", "apagat");
         System.out.printf("S'ha %s el termòstat d'aquesta habitació.%n", msg);
     }
 
@@ -105,7 +105,7 @@ public class Thermostat {
     }
 
    /**
-     * Mostra l'estat del termòstat (ences/apagat) - (temperatura).
+     * Mostra l'estat del termòstat (encès/apagat) - (temperatura).
      * 
      * @param room Ha de ser el nom exacte (Hi ha un array amb aquests a {@link Menus}).
      */
@@ -122,7 +122,7 @@ public class Thermostat {
 
         // * Cos
         currentState = status.get(room);
-        msg = Formatter.getGR(currentState, "Ences", "Apagat");
+        msg = Formatter.getGR(currentState, "Encès", "Apagat");
         temperatureString = formatTemperature(room);
         
         System.out.printf("%s - %s.%n", msg, temperatureString);
@@ -130,21 +130,21 @@ public class Thermostat {
 
     // #endregion
 
-    // #region Métodes globals
+    // #region Mètodes globals
     /**
-     * Actualitza l'estat (ences/apagat) de tots els termòstats.
+     * Actualitza l'estat (encès/apagat) de tots els termòstats.
      */
     public static void turnAllThermostats(boolean newState) {
         for (String room : Menus.ROOMS) {
             status.put(room, newState);
         }
 
-        String msg = Formatter.getGR(newState, "ences", "apagat");
+        String msg = Formatter.getGR(newState, "encès", "apagat");
         System.out.printf("S'ha %s tots els termòstats.%n", msg);
     }
 
     /**
-     * Mostra l'estat de tots els termòstats (ences/apagat) - (temperatura).
+     * Mostra l'estat de tots els termòstats (encès/apagat) - (temperatura).
      */
     public static void showAllThermsStatus() {
         // * Declaració de variables
@@ -161,7 +161,7 @@ public class Thermostat {
         for (String room : Menus.ROOMS) {
             currentState = status.get(room);
 
-            msg = Formatter.getGR(currentState, "Ences", "Apagat");
+            msg = Formatter.getGR(currentState, "Encès", "Apagat");
             temperatureString = formatTemperature(room);
             roomFormatted = Formatter.getStrong(room);
             
